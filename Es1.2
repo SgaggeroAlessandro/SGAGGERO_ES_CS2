@@ -1,0 +1,52 @@
+﻿using System;
+
+namespace Es1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int x;
+            Console.WriteLine("Questo programma verifica se un numero codice di transazione bancaria inserito in input è valido per il pagamento");
+            Console.WriteLine("Inserisci il numero:");
+
+            int.TryParse(Console.ReadLine(), out x);
+
+            int no = x;
+
+            int cont = 0;
+            int nt = x;
+            while (nt > 0)
+            {
+                nt = nt / 10;
+                cont++;
+            }
+
+            int s = 0;
+            nt = x;
+            while (nt > 0)
+
+            {
+                int c = nt % 10;
+                int p = 1;
+
+                for (int i = 0; i < cont; i++)
+                {
+                    p *= c;
+                }
+
+                s += p;
+                nt = nt / 10;
+            }
+
+            if (s == no)
+            {
+                Console.WriteLine("Codice valido");
+            }
+            else
+            {
+                Console.WriteLine("Codice non valido");
+            }
+        }
+    }
+}
